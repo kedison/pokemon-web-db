@@ -1,0 +1,264 @@
+html
+    head
+        link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh' crossorigin='anonymous')
+        link(rel="stylesheet" href="/css/styles.css")
+
+    body
+        //- nav bar section
+        nav.navbar.navbar-expand-sm.navbar-light.sticky-top.container(style='background-color: white;')
+            a.navbar-brand(href='/')
+                img(src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/512px-Pok%C3%A9_Ball_icon.svg.png" style="width:45px")
+            button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarText' aria-controls='navbarText' aria-expanded='false' aria-label='Toggle navigation')
+                span.custom-toggler-icon menu
+            #navbarText.collapse.navbar-collapse
+                ul.navbar-nav.mr-auto
+                    li.nav-item
+                        a.nav-link(href='/') Database 
+                    li.nav-item
+                        a.nav-link(href='/about') About
+                    li.nav-item.active
+                        a.nav-link(href='admin/index') 
+                            | Admin
+                            span.sr-only (current)
+    
+        //- hero section
+        //- image sourced from https://dribbble.com/shots/2623317-Pokeball-Logo-Illustration
+        //- .container
+        //-     img.img-fluid(src='/img/heroimage_pokeball.jpg' alt='pokemon hero image')
+        
+        //- content section
+        .container
+            h1 Pokédex Database Admin
+            p This is the Pokédex Database Admin where you can add, edit and delete Pokémons from the database. What you add, edit or delete will be reflected on the database system and will be shown on the home page. Newest inputted data will be shown at the top. On home page, the data will be automatcially sorted by the Pokémon's number. Please be respectful of the data you input, must be accurate data to avoid misleding others. Thank you.
+
+            a.btn.btn-outline-dark.btn-lg.btn-block(type='button' data-backdrop='static' data-toggle='modal' data-target='#createModal' href='/admin/create') Create
+            #createModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='createModal' aria-hidden='true')
+                .modal-dialog.modal-dialog-centered(role='document')
+                    .modal-content
+                        .modal-header
+                            h5#createModal.modal-title Enter Pokemon Stats
+                            button.close(type='button' data-dismiss='modal' aria-label='Close')
+                                span(aria-hidden='true') &times;
+                        .modal-body
+                            form(action="/admin/create" method="post")
+                                .form-group.row
+                                    label.col-sm-2.col-form-label(for='inputNumber') Number
+                                    .col-sm-10
+                                        input#inputNumber.form-control(type='text' minlength='3' maxlength='3' placeholder='000' name='number')
+                                .form-group.row
+                                    label.col-sm-2.col-form-label(for='inputName') Name
+                                    .col-sm-10
+                                        input#inputName.form-control(type='text' placeholder='name' name='name')
+                                .form-group.row
+                                    label.col-sm-2.col-form-label(for='inputType1') Type 1
+                                    .col-sm-10
+                                        select.custom-select(name='type1')
+                                            option(selected='' value='-') -
+                                            option(value='Bug') Bug
+                                            option(value='Dark') Dark
+                                            option(value='Dragon') Dragon
+                                            option(value='Electric') Electric
+                                            option(value='Fairy') Fairy
+                                            option(value='Fire') Fire
+                                            option(value='Fighting') Fighting
+                                            option(value='Flying') Flying
+                                            option(value='Ghost') Ghost
+                                            option(value='Grass') Grass
+                                            option(value='Ground') Ground
+                                            option(value='Ice') Ice
+                                            option(value='Normal') Normal
+                                            option(value='Poison') Poison
+                                            option(value='Psychic') Psychic
+                                            option(value='Rock') Rock
+                                            option(value='Steel') Steel
+                                            option(value='Water') Water
+                                .form-group.row
+                                    label.col-sm-2.col-form-label(for='inputType2') Type 2
+                                    .col-sm-10
+                                        select.custom-select(name='type2')
+                                            option(selected='' value='') -
+                                            option(value='Bug') Bug
+                                            option(value='Dark') Dark
+                                            option(value='Dragon') Dragon
+                                            option(value='Electric') Electric
+                                            option(value='Fairy') Fairy
+                                            option(value='Fire') Fire
+                                            option(value='Fighting') Fighting
+                                            option(value='Flying') Flying
+                                            option(value='Ghost') Ghost
+                                            option(value='Grass') Grass
+                                            option(value='Ground') Ground
+                                            option(value='Ice') Ice
+                                            option(value='Normal') Normal
+                                            option(value='Poison') Poison
+                                            option(value='Psychic') Psychic
+                                            option(value='Rock') Rock
+                                            option(value='Steel') Steel
+                                            option(value='Water') Water
+                                        //- input#inputType2.form-control(type='text' placeholder='type 2' name='type2')
+                                .form-group.row
+                                    label.col-sm-2.col-form-label(for='inputHp') HP
+                                    .col-sm-10
+                                        input#inputHp.form-control(type='number' placeholder='hp points' name='hp')
+                                .form-group.row
+                                    label.col-sm-2.col-form-label(for='inputAttack') Attack
+                                    .col-sm-10
+                                        input#inputAttack.form-control(type='number' placeholder='attack points' name='attack')
+                                .form-group.row
+                                    label.col-sm-2.col-form-label(for='inputDefense') Defense
+                                    .col-sm-10
+                                        input#inputDefense.form-control(type='number' placeholder='defense points' name='defense')
+                                .form-group.row
+                                    label.col-sm-2.col-form-label(for='inputDescription') Details
+                                    .col-sm-10
+                                        textarea#inputDescription.form-control(type='text' placeholder='description' name='description')
+                                .form-group.row
+                                    label.col-sm-2.col-form-label(for='inputImage') Image
+                                    .col-sm-10
+                                        input#inputImage.form-control(type='text' placeholder='image src link' name='image')
+                                br
+                                //- button.btn.btn-secondary.btn-lg.btn-block(type='button' data-dismiss='modal') Close
+                                button.btn.btn-primary.btn-lg.btn-block(href='/admin/create') Create
+            br
+            .table-responsive
+                table.table.table-hover.table-borderless.rounded.border
+                    thead.thead-dark
+                        tr
+                            th(scope='col') #
+                            th(scope='col') Pokemon
+                            th(scope='col') Type 1
+                            th(scope='col') Type 2
+                            th(scope='col') HP
+                            th(scope='col') Attack
+                            th(scope='col') Defense
+                            th(scope='col') Update
+                            th(scope='col') Remove
+                    tbody
+                        each PokemondbStructure in pokemondb
+                            tr
+                                th(scope='row')=PokemondbStructure.number
+                                td=PokemondbStructure.name
+                                td=PokemondbStructure.type_1
+                                td=PokemondbStructure.type_2
+                                td=PokemondbStructure.hp
+                                td=PokemondbStructure.attack
+                                td=PokemondbStructure.defense
+                                td 
+                                    - var editIdModal = `editModal${PokemondbStructure.id}`
+                                    button.badge.badge-primary(type='button' data-backdrop='static' data-toggle='modal' data-target=`#${editIdModal}` href='/admin/update/' + PokemondbStructure.id) Edit
+                                    div.modal.fade(id=`${editIdModal}` tabindex='-1' role='dialog' aria-labelledby='editModal' aria-hidden='true')
+                                        .modal-dialog.modal-dialog-centered(role='document')
+                                            .modal-content
+                                                .modal-header
+                                                    h5#editModal.modal-title Edit Pokemon Stats
+                                                    button.close(type='button' data-dismiss='modal' aria-label='Close')
+                                                        span(aria-hidden='true') &times;
+                                                .modal-body
+                                                    form(action="/admin/update" method="post")
+                                                        input#inputId(type='hidden' name="id" value=PokemondbStructure.id)
+                                                        .form-group.row
+                                                            label.col-sm-2.col-form-label(for='inputNumber') Number
+                                                            .col-sm-10
+                                                                input#inputNumber.form-control(type='text' minlength='3' maxlength='3' placeholder='000' name='number' value=PokemondbStructure.number)
+                                                        .form-group.row
+                                                            label.col-sm-2.col-form-label(for='inputName') Name
+                                                            .col-sm-10
+                                                                input#inputName.form-control(type='text' placeholder='name' name='name' value=PokemondbStructure.name)
+                                                        .form-group.row
+                                                            label.col-sm-2.col-form-label(for='inputType') Type 1
+                                                            .col-sm-10
+                                                                select.custom-select(name='type1' value=PokemondbStructure.type_1)
+                                                                    option(value='') -
+                                                                    option(value='Bug', selected=PokemondbStructure.type_1==='Bug') Bug
+                                                                    option(value='Dark', selected=PokemondbStructure.type_1==='Dark') Dark
+                                                                    option(value='Dragon', selected=PokemondbStructure.type_1==='Dragon') Dragon
+                                                                    option(value='Electric', selected=PokemondbStructure.type_1==='Electric') Electric
+                                                                    option(value='Fairy', selected=PokemondbStructure.type_1==='Fairy') Fairy
+                                                                    option(value='Fire', selected=PokemondbStructure.type_1==='Fire') Fire
+                                                                    option(value='Fighting', selected=PokemondbStructure.type_1==='Fighting') Fighting
+                                                                    option(value='Flying', selected=PokemondbStructure.type_1==='Flying') Flying
+                                                                    option(value='Ghost', selected=PokemondbStructure.type_1==='Ghost') Ghost
+                                                                    option(value='Grass', selected=PokemondbStructure.type_1==='Grass') Grass
+                                                                    option(value='Ground', selected=PokemondbStructure.type_1==='Ground') Ground
+                                                                    option(value='Ice', selected=PokemondbStructure.type_1==='Ice') Ice
+                                                                    option(value='Normal', selected=PokemondbStructure.type_1==='Normal') Normal
+                                                                    option(value='Poison', selected=PokemondbStructure.type_1==='Poison' ) Poison
+                                                                    option(value='Psychic', selected=PokemondbStructure.type_1==='Psychic') Psychic
+                                                                    option(value='Rock', selected=PokemondbStructure.type_1==='Rock') Rock
+                                                                    option(value='Steel', selected=PokemondbStructure.type_1==='Steel') Steel
+                                                                    option(value='Water', selected=PokemondbStructure.type_1==='Water') Water
+                                                                //- input#inputType1.form-control(type='text' placeholder='type 1' name='type1' value=pokemon.type_1)
+                                                        .form-group.row
+                                                            label.col-sm-2.col-form-label(for='inputType') Type 2
+                                                            .col-sm-10
+                                                                select.custom-select(name='type2' value=PokemondbStructure.type_2)
+                                                                    option(value='') -
+                                                                    option(value='Bug', selected=PokemondbStructure.type_2==='Bug') Bug
+                                                                    option(value='Dark', selected=PokemondbStructure.type_2==='Dark') Dark
+                                                                    option(value='Dragon', selected=PokemondbStructure.type_2==='Dragon') Dragon
+                                                                    option(value='Electric', selected=PokemondbStructure.type_2==='Electric') Electric
+                                                                    option(value='Fairy', selected=PokemondbStructure.type_2==='Fairy') Fairy
+                                                                    option(value='Fire', selected=PokemondbStructure.type_2==='Fire') Fire
+                                                                    option(value='Fighting', selected=PokemondbStructure.type_2==='Fighting') Fighting
+                                                                    option(value='Flying', selected=PokemondbStructure.type_2==='Flying') Flying
+                                                                    option(value='Ghost', selected=PokemondbStructure.type_2==='Ghost') Ghost
+                                                                    option(value='Grass', selected=PokemondbStructure.type_2==='Grass') Grass
+                                                                    option(value='Ground', selected=PokemondbStructure.type_2==='Ground') Ground
+                                                                    option(value='Ice', selected=PokemondbStructure.type_2==='Ice') Ice
+                                                                    option(value='Normal', selected=PokemondbStructure.type_2==='Normal') Normal
+                                                                    option(value='Poison', selected=PokemondbStructure.type_2==='Poison' ) Poison
+                                                                    option(value='Psychic', selected=PokemondbStructure.type_2==='Psychic') Psychic
+                                                                    option(value='Rock', selected=PokemondbStructure.type_2==='Rock') Rock
+                                                                    option(value='Steel', selected=PokemondbStructure.type_2==='Steel') Steel
+                                                                    option(value='Water', selected=PokemondbStructure.type_2==='Water') Water
+                                                                //- input#inputType2.form-control(type='text' placeholder='type 2' name='type2' value=pokemon.type_2)
+                                                        .form-group.row
+                                                            label.col-sm-2.col-form-label(for='inputHp') HP
+                                                            .col-sm-10
+                                                                input#inputHp.form-control(type='number' placeholder='hp' name='hp' value=PokemondbStructure.hp)
+                                                        .form-group.row
+                                                            label.col-sm-2.col-form-label(for='inputAttack') Attack
+                                                            .col-sm-10
+                                                                input#inputAttack.form-control(type='number' placeholder='attack' name='attack' value=PokemondbStructure.attack)
+                                                        .form-group.row
+                                                            label.col-sm-2.col-form-label(for='inputDefense') Defense
+                                                            .col-sm-10
+                                                                input#inputDefense.form-control(type='number' placeholder='defense' name='defense' value=PokemondbStructure.defense)
+                                                        .form-group.row
+                                                            label.col-sm-2.col-form-label(for='inputDescription') Details
+                                                            .col-sm-10
+                                                                textarea#inputDescription.form-control(type='text' placeholder='description' name='description')=PokemondbStructure.description
+                                                        .form-group.row
+                                                            label.col-sm-2.col-form-label(for='inputImage') Image
+                                                            .col-sm-10
+                                                                input#inputImage.form-control(type='text' placeholder='image' name='image' value=PokemondbStructure.image)
+                                                        br
+                                                        button.btn.btn-primary.btn-lg.btn-block Update
+                                                        
+                                td 
+                                    - var deleteIdModal = `deleteModal${PokemondbStructure.id}`
+                                    button.badge.badge-danger(type='button' data-backdrop='static' data-toggle='modal' data-target=`#${deleteIdModal}`) Delete
+                                    div.modal.fade(id=`${deleteIdModal}` tabindex='-1' role='dialog' aria-labelledby='deleteModalTitle' aria-hidden='true')
+                                        .modal-dialog.modal-dialog-centered(role='document')
+                                            .modal-content
+                                                //- .modal-header
+                                                //-     h5#deleteModalTitle.modal-title Confirmation of Delete
+                                                .modal-body.text-center
+                                                    h5 Confirmation of Delete
+                                                    hr
+                                                    img(src=PokemondbStructure.image)
+                                                    h3=PokemondbStructure.name
+                                                    p 
+                                                        .list-inline-item="You are about to delete " + PokemondbStructure.name + " from the database. Proceed?"
+                                                    br
+                                                    a.btn.btn-outline-danger.btn-lg.btn-block(href='/admin/delete/' + PokemondbStructure.id) Delete
+                                                    button.btn.btn-outline-primary.btn-lg.btn-block(type='button' data-dismiss='modal') Cancel
+            
+        //- footer section
+        .container.footer
+            hr
+            p copyright 2020 all rights reserved   
+
+        script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js' integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n' crossorigin='anonymous')
+        script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js' integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo' crossorigin='anonymous')
+        script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js' integrity='sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6' crossorigin='anonymous')

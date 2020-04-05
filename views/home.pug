@@ -1,0 +1,98 @@
+html
+    head
+        link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh' crossorigin='anonymous')
+        link(rel="stylesheet" href="css/styles.css")
+
+    body
+        //- hero section
+        //- image sourced from https://dribbble.com/shots/2623317-Pokeball-Logo-Illustration and https://www.pokemon.com/us/pokedex/
+        .jumbotron.jumbotron-fluid
+            img.img-fluid(src='img/heroimage.jpg' alt='pokemon hero image')
+
+        //- nav bar section
+        nav.navbar.navbar-expand-sm.navbar-light.sticky-top.container(style='background-color: white')
+            a.navbar-brand(href='/')
+                img(src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/512px-Pok%C3%A9_Ball_icon.svg.png" style="width:45px")
+            button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarText' aria-controls='navbarText' aria-expanded='false' aria-label='Toggle navigation')
+                span.custom-toggler-icon menu
+            #navbarText.collapse.navbar-collapse
+                ul.navbar-nav
+                    li.nav-item.active
+                        a.nav-link(href='/')
+                            | Database 
+                            span.sr-only (current)
+                    li.nav-item
+                        a.nav-link(href='/about') About
+                    li.nav-item
+                        a.nav-link(href='admin/index') Admin
+        
+        //- content section
+        //- written content sourced from https://en.wikipedia.org/wiki/List_of_Pok%C3%A9mon
+        .container
+            hr
+            br
+            h1 Pokédex Database
+            .table-responsive
+                table.table.table-hover.table-borderless.table-light.rounded.border
+                    thead.thead-dark
+                        tr
+                            th(scope='col') #
+                            th(scope='col') Pokemon
+                            th(scope='col') Type 1
+                            th(scope='col') Type 2
+                            th(scope='col') HP
+                            th(scope='col') Attack
+                            th(scope='col') Defense
+                            th(scope='col') Details
+                        each PokemondbStructure in pokemondb
+                            tbody
+                                tr
+                                    th(scope='row')=PokemondbStructure.number
+                                    td=PokemondbStructure.name
+                                    td=PokemondbStructure.type_1
+                                    td=PokemondbStructure.type_2
+                                    td=PokemondbStructure.hp
+                                    td=PokemondbStructure.attack
+                                    td=PokemondbStructure.defense
+                                    td
+                                        - var viewIdModal = `viewModal${PokemondbStructure.id}`
+                                        button.badge.badge-dark(type='button' data-toggle='modal' data-target=`#${viewIdModal}`) View
+                                        div.modal.fade(id=`${viewIdModal}` tabindex='-1' role='dialog' aria-labelledby='viewDetailsTitle' aria-hidden='true')
+                                            .modal-dialog.modal-dialog-centered(role='document')
+                                                .modal-content
+                                                    .modal-header
+                                                        h4="#" + PokemondbStructure.number
+                                                        //- h5#viewDetailsTitle.modal-title Pokemon Details
+                                                        button.close(type='button' data-dismiss='modal' aria-label='Close')
+                                                            span(aria-hidden='true') &times;
+                                                    .modal-body
+                                                        img(src=PokemondbStructure.image)
+                                                        h2=PokemondbStructure.name
+                                                        h4
+                                                            .badge.badge-dark=PokemondbStructure.type_1
+                                                            .badge.badge-dark(style="margin-left:0.5em")= PokemondbStructure.type_2
+                                                        hr
+                                                        h5
+                                                            .list-inline-item="HP: " + PokemondbStructure.hp + " /"
+                                                            .list-inline-item="ATK: " + PokemondbStructure.attack + " /"
+                                                            .list-inline-item="DEF: " + PokemondbStructure.defense
+                                                        p=PokemondbStructure.description
+                                                    //- .modal-footer
+                                                    //-     button.btn.btn-outline-primary.btn-lg.btn-block(type='button' data-dismiss='modal') Close
+            br
+            h1 Pokémon
+            p The Pokémon franchise revolves around 896 fictional species of collectible monsters, each having unique designs and skills. Conceived by Satoshi Tajiri in early 1989, Pokémon are creatures that inhabit the fictional Pokémon World. The designs for the multitude of species can draw inspiration from anything such as animals, plants, mythological creatures and even inanimate objects. Many Pokémon are capable of evolving into more powerful species, while others can undergo form changes and achieve similar results. There are even some of them that cannot evolve. Originally, only a handful of artists led by Ken Sugimori designed Pokémon. However, by 2013 a team of 20 artists worked together to create new species designs. Sugimori and Hironobu Yoshida lead the team and determine the final designs. Each iteration of the series has brought about praise and criticism over the numerous creatures.
+            p The vast array of creatures is commonly divided into "Generations", with each division primarily encompassing new titles in the main video game series and often a change of handheld platform. Generation I refers to Red, Green, Blue, and Yellow; Generation II refers to Gold, Silver, and Crystal; Generation III refers to Ruby, Sapphire, FireRed, LeafGreen, and Emerald; Generation IV refers to Diamond, Pearl, Platinum, HeartGold, and SoulSilver; Generation V refers to Black, White, Black 2, and White 2; Generation VI refers to X, Y, Omega Ruby, and Alpha Sapphire; Generation VII refers to Sun, Moon, Ultra Sun, Ultra Moon, Let's Go, Pikachu!, and Let's Go, Eevee!; and Generation VIII refers to Sword and Shield. Each Generation is also marked by the addition of new Pokémon: 151 in Generation I in the Kanto Region, 100 in Generation II in the Johto region, 135 in Generation III in the Hoenn region, 107 in Generation IV in the Sinnoh region, 156 in Generation V in the Unova region, 72 in Generation VI in the Kalos region, 88 in Generation VII in the Alola and Kanto regions, and 87 in Generation VIII in the Galar region.
+            p In the final episode of Pokémon the Series: Sun & Moon – Ultra Legends, Ash Ketchum discovered a new never before seen Ultra Beast in a new area in Ultra Space and registered it into his Pokédex. Whilst he showed the information to his friends, the information was not shown to the viewer, leaving the species unrevealed, and causing it to be an anime exclusive unrevealed Pokémon species.
+            p Due to the large number of Pokémon, listing of each species is divided into articles by generation. The 896 Pokémon are organized by their number in the National Pokédex—an in-game electronic encyclopedia that provides various information on Pokémon. The National Pokédex is subdivided into regional Pokédex series, each revolving around species introduced at the time of their respective generations along with older generations. For example, the Johto Pokédex, Generation II, covers the 100 species introduced in Gold and Silver in addition to the original 151 species. The encyclopedias follow a general ordering: starter Pokémon are listed first, followed by species obtainable early in the respective games, and are concluded with Legendary and Mythical Pokémon. Generation V is a notable exception, as Victini is the first Pokémon in the Unova Pokédex and is also uniquely numbered as number 000.
+            
+        //- footer section
+        .container.footer
+            hr
+            p copyright 2020 all rights reserved                 
+
+            
+
+        script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js' integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n' crossorigin='anonymous')
+        script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js' integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo' crossorigin='anonymous')
+        script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js' integrity='sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6' crossorigin='anonymous')

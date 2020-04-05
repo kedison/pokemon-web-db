@@ -1,0 +1,49 @@
+html
+    head
+        link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh' crossorigin='anonymous')
+        link(rel="stylesheet" href="css/styles.css")
+
+    body
+        //- nav bar section
+        nav.navbar.navbar-expand-sm.navbar-light.sticky-top.container(style='background-color: white;')
+            a.navbar-brand(href='/')
+                img(src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/512px-Pok%C3%A9_Ball_icon.svg.png" style="width:45px")
+            button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarText' aria-controls='navbarText' aria-expanded='false' aria-label='Toggle navigation')
+                span.custom-toggler-icon menu
+            #navbarText.collapse.navbar-collapse
+                ul.navbar-nav.mr-auto
+                    li.nav-item
+                        a.nav-link(href='/') Database 
+                    li.nav-item.active
+                        a.nav-link(href='/about') 
+                            | About 
+                            span.sr-only (current)
+                    li.nav-item
+                        a.nav-link(href='admin/index') Admin 
+
+        //- hero section
+        //- image sourced from https://dribbble.com/shots/2623317-Pokeball-Logo-Illustration
+        .container
+            img.img-fluid(src='/img/heroimage_pokeball.jpg' alt='pokemon hero image')
+
+        //- content section
+        //- written content sourced from https://en.wikipedia.org/wiki/List_of_Pok%C3%A9mon
+        .container
+            h1 About
+            p The premise of Pokémon in general was conceived by Satoshi Tajiri—who later founded Game Freak—in 1989, when the Game Boy was released. The creatures that inhabit the world of Pokémon are also called Pokémon.[1] The word "Pokémon" is a romanized contraction of the Japanese brand Pocket Monsters (ポケットモンスター, Poketto Monsutā).[2] The concept of the Pokémon universe, in both the video games and the general fictional world of Pokémon, stems most notably from Tajiri's childhood hobby of insect collecting. Other influences on the concept include Ultraman, anime, and playing video games in general. Throughout his early life, Tajiri saw his rural, nature-filled hometown (Machida, Tokyo) transform into an urban center. The urbanization of his town drove away wildlife and he and others living in the area were eventually unable to collect insects. Through Pokémon, Tajiri sought to bring back this outdoor pastime and share it with the world.[1] The first games in the franchise, Red and Green, were released on 27 February 1996 in Japan for the Game Boy;[3] the games saw an international release as Red and Blue in September 1998.[4] The ability to capture, battle, trade, and care for numerous creatures catapulted Pokémon to international popularity[2] and it has become a multibillion-dollar franchise and the second-best selling video game series, only behind the Mario franchise.[5]
+
+            p At the start of a main series Pokémon game, the player character receives one of three "starter" Pokémon, with which they can battle and catch other Pokémon. Each Pokémon has one or two "types", such as Fire, Water, or Grass. In battle, certain types are strong against other types. For example, a fire-type attack will do more damage to a grass-type Pokémon than a water-type attack.[6] This form of gameplay is frequently compared to that of rock-paper-scissors, though players have to strategize which Pokémon and which of their attacks to use against various opponents.[7][8]
+
+            p Many species of Pokémon are capable of evolving into a larger and more powerful creature. The change is accompanied by stat changes, generally a modest increase, and access to a wider variety of attacks. There are multiple ways to trigger an evolution including reaching a particular level, using a special stone, or learning a specific attack. For example, at level 16 Bulbasaur is capable of evolving into Ivysaur. Most notably, the Normal-type Eevee is capable of evolving into eight different Pokémon: Jolteon (Electric), Flareon (Fire), Vaporeon (Water), Umbreon (Dark), Espeon (Psychic), Leafeon (Grass), Glaceon (Ice), and Sylveon (Fairy). In Generation VI, a new mechanic called Mega Evolution—as well as a subset of Mega Evolution called Primal Reversion—was introduced into the game. Unlike normal evolution, Mega Evolution and Primal Reversion last only for the duration of a battle, with the Pokémon reverting to its normal form at the end. Forty-eight Pokémon are capable of undergoing Mega Evolution or Primal Reversion as of the release of Sun and Moon. In contrast, some species such as Castform, Rotom, Unown, and Lycanroc undergo form changes that may provide stat buffs or changes and type alterations but are not considered new species. Some Pokémon have differences in appearance due to gender. Pokémon can be male or female, male-only, female-only, or genderless.[9]
+
+            p Though the Pokémon franchise is primarily intended for younger players, each Pokémon has various complex attributes such as natures, characteristic traits, Individual Values (IVs), and Effort Values (EVs). These, according to Game Freak Board Director Junichi Masuda, are intended for people "who enjoy battling and want to go more in depth". These individual statistics were also included because the basic concept of the franchise is to train one's Pokémon. Designer Takeshi Kawachimaru stated that IVs and EVs "help to make each Pokemon in the game individual", as it adds unique aspects to them.[10] Each Pokémon game introduces a few "Legendary" and "Mythical" Pokémon that are powerful, rare, and hard to catch.[11] Pokémon Sun and Moon introduced "Ultra Beasts", which are described as "beings from another dimension" that appeared in the Alola region and are similarly powerful and rare.[12]
+
+        //- footer section
+        .container.footer
+            hr
+            p copyright 2020 all rights reserved
+
+
+        script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js' integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n' crossorigin='anonymous')
+        script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js' integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo' crossorigin='anonymous')
+        script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js' integrity='sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6' crossorigin='anonymous')
