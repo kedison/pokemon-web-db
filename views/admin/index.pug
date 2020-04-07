@@ -27,9 +27,9 @@ html
         //-     img.img-fluid(src='/img/heroimage_pokeball.jpg' alt='pokemon hero image')
         
         //- content section
-        .container
+        #body.container
             h1 Pokédex Database Admin
-            p This is the Pokédex Database Admin where you can add, edit and delete Pokémons from the database. What you add, edit or delete will be reflected on the database system and will be shown on the home page. Newest inputted data will be shown at the top. On home page, the data will be automatcially sorted by the Pokémon's number. Please be respectful of the data you input, must be accurate data to avoid misleding others. Thank you.
+            p This is the Pokédex Database Admin where you can add, edit and delete Pokémons from the database. What you add, edit or delete will be reflected on the database system and will be shown on the home page. Newest inputted data will be shown at the top. On home page, the data will be automatcially sorted by the Pokémon's number. Images can be referenced from "https://www.pokemon.com/us/pokedex/". Please be respectful of the data you input, must be accurate data to avoid misleding others. Thank you.
 
             a.btn.btn-outline-dark.btn-lg.btn-block(type='button' data-backdrop='static' data-toggle='modal' data-target='#createModal' href='/admin/create') Create
             #createModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='createModal' aria-hidden='true')
@@ -154,7 +154,7 @@ html
                                                     button.close(type='button' data-dismiss='modal' aria-label='Close')
                                                         span(aria-hidden='true') &times;
                                                 .modal-body
-                                                    form(action="/admin/update" method="post")
+                                                    form#form(action="/admin/update" method="post")
                                                         input#inputId(type='hidden' name="id" value=PokemondbStructure.id)
                                                         .form-group.row
                                                             label.col-sm-2.col-form-label(for='inputNumber') Number
@@ -246,7 +246,7 @@ html
                                                 .modal-body.text-center
                                                     h5 Confirmation of Delete
                                                     hr
-                                                    img(src=PokemondbStructure.image)
+                                                    img.img-fluid(src=PokemondbStructure.image)
                                                     h3=PokemondbStructure.name
                                                     p 
                                                         .list-inline-item="You are about to delete " + PokemondbStructure.name + " from the database. Proceed?"
@@ -255,7 +255,7 @@ html
                                                     button.btn.btn-outline-primary.btn-lg.btn-block(type='button' data-dismiss='modal') Cancel
             
         //- footer section
-        .container.footer
+        #footer.container
             hr
             p copyright 2020 all rights reserved   
 

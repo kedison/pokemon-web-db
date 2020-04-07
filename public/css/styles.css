@@ -1,31 +1,20 @@
 body {
-    /* background-color: #2c2f30; */
-    /* color: white; */
+    font-family: 'Rubik', sans-serif;
+}
+#body.container p {
     background-color: white;
-    line-height: 30px;
+    line-height: 36px;
     font-size: 18px;
+    font-weight: 300;
 }
-
-/* body.table {
-    border: 1px solid black;
-} */
-
-.jumbotron {
-    background-color: white;
-}
-
-/* table img {
-    width: 50px;
-}
-
-table td {
-    display: table-cell;
-    vertical-align: middle;
-}
- */
 
  #createModal{
     background-color:rgba(255, 255, 255, 1.00);
+ }
+
+ #createModal form{
+    font-size: 16px;
+    font-weight: 400;
  }
 
  .modal p{
@@ -33,10 +22,19 @@ table td {
     font-size: 18px;
  }
 
- .footer {
-     font-size: 14px;
+#footer p {
+     font-size: 12px;
      color: grey;
  }
 
+#tag {
+     font-weight: 400;
+ }
+
+ #description {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 300;
+ }
 
 

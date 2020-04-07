@@ -2,11 +2,13 @@ html
     head
         link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh' crossorigin='anonymous')
         link(rel="stylesheet" href="css/styles.css")
+        link(href='https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap' rel='stylesheet')
+
 
     body
         //- hero section
         //- image sourced from https://dribbble.com/shots/2623317-Pokeball-Logo-Illustration and https://www.pokemon.com/us/pokedex/
-        .jumbotron.jumbotron-fluid
+        #hero.jumbotron-fluid
             img.img-fluid(src='img/heroimage.jpg' alt='pokemon hero image')
 
         //- nav bar section
@@ -28,7 +30,7 @@ html
         
         //- content section
         //- written content sourced from https://en.wikipedia.org/wiki/List_of_Pok%C3%A9mon
-        .container
+        #body.container
             hr
             br
             h1 Pokédex Database
@@ -66,17 +68,18 @@ html
                                                         button.close(type='button' data-dismiss='modal' aria-label='Close')
                                                             span(aria-hidden='true') &times;
                                                     .modal-body
-                                                        img(src=PokemondbStructure.image)
+                                                        img.img-fluid(src=PokemondbStructure.image)
                                                         h2=PokemondbStructure.name
                                                         h4
-                                                            .badge.badge-dark=PokemondbStructure.type_1
-                                                            .badge.badge-dark(style="margin-left:0.5em")= PokemondbStructure.type_2
+                                                            #tag.badge.badge-dark=PokemondbStructure.type_1
+                                                            #tag.badge.badge-dark(style="margin-left:0.5em")= PokemondbStructure.type_2
                                                         hr
                                                         h5
                                                             .list-inline-item="HP: " + PokemondbStructure.hp + " /"
                                                             .list-inline-item="ATK: " + PokemondbStructure.attack + " /"
                                                             .list-inline-item="DEF: " + PokemondbStructure.defense
-                                                        p=PokemondbStructure.description
+                                                        p
+                                                            #description=PokemondbStructure.description
                                                     //- .modal-footer
                                                     //-     button.btn.btn-outline-primary.btn-lg.btn-block(type='button' data-dismiss='modal') Close
             br
@@ -87,11 +90,9 @@ html
             p Due to the large number of Pokémon, listing of each species is divided into articles by generation. The 896 Pokémon are organized by their number in the National Pokédex—an in-game electronic encyclopedia that provides various information on Pokémon. The National Pokédex is subdivided into regional Pokédex series, each revolving around species introduced at the time of their respective generations along with older generations. For example, the Johto Pokédex, Generation II, covers the 100 species introduced in Gold and Silver in addition to the original 151 species. The encyclopedias follow a general ordering: starter Pokémon are listed first, followed by species obtainable early in the respective games, and are concluded with Legendary and Mythical Pokémon. Generation V is a notable exception, as Victini is the first Pokémon in the Unova Pokédex and is also uniquely numbered as number 000.
             
         //- footer section
-        .container.footer
+        #footer.container
             hr
-            p copyright 2020 all rights reserved                 
-
-            
+            p copyright 2020 all rights reserved            
 
         script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js' integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n' crossorigin='anonymous')
         script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js' integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo' crossorigin='anonymous')
